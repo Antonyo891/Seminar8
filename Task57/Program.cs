@@ -20,7 +20,7 @@ int[,] GetArray(int line, int column) // создает двумерный ма�
     int[,] result = new int[line, column];
     for (int i = 0; i < line; i++)
     {
-        for (int j = 0; j < column; j++) result[i, j] = new Random().Next(-9, 10);
+        for (int j = 0; j < column; j++) result[i, j] = new Random().Next(9);
     }
     return result;
 }
@@ -60,11 +60,27 @@ void SortingArray(int[] array)
             array[max] = saveLast;
             array[min] = saveFirst;
         }
-        else if (max==i&&min!=array.Length - 1 - i) array[min] = saveLast;
-            else if (min==array.Length - 1 - i&&max!=i) array[max] = saveFirst;
-            else if (min==i&&max!=array.Length - 1 - i) array[max]=saveLast;
-            else if (max==array.Length - 1 - i&&min!=i) array[min]=saveFirst; 
+        else if (max == i && min != array.Length - 1 - i) array[min] = saveLast;
+        else if (min == array.Length - 1 - i && max != i) array[max] = saveFirst;
+        else if (min == i && max != array.Length - 1 - i) array[max] = saveLast;
+        else if (max == array.Length - 1 - i && min != i) array[min] = saveFirst;
         //Write($"{string.Join(" ", array)} /");
+    }
+}
+void SortingArrayBouble(int[] array)
+{
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        for (int j = i + 1; j < array.Length; j++)
+        {
+            if (array[j] < array[i])
+            {
+                int save = array[i];
+                array[i] = array[j];
+                array[j] = save;
+            }
+        }
     }
 }
 void PrintArray(int[,] array)
@@ -87,11 +103,12 @@ void FrequencyDictionary(int[] array)
         }
     WriteLine($"{array[array.Length - 1]} - {count} раз");
 }
-int[,] arrayTwoDimenional = GetArray(3, 3);
+int[,] arrayTwoDimenional = GetArray(5,5);
 Clear();
 PrintArray(arrayTwoDimenional);
 int[] arrayOneDimensional = TwoDimensionalToOneDimensioal(arrayTwoDimenional);//{ 9, 2, 8, 5, 9, 9, 4, 5, 3 };
 WriteLine($"[ {String.Join(" ", arrayOneDimensional)} ]");
+//DateTime dt = DateTime.Now;
 SortingArray(arrayOneDimensional);
 WriteLine($"[ {String.Join(" ", arrayOneDimensional)} ]");
 FrequencyDictionary(arrayOneDimensional);
