@@ -111,4 +111,5 @@ WriteLine($"[ {String.Join(" ", arrayOneDimensional)} ]");
 //DateTime dt = DateTime.Now;
 SortingArray(arrayOneDimensional);
 WriteLine($"[ {String.Join(" ", arrayOneDimensional)} ]");
+const int cellWidht = 5;
 FrequencyDictionary(arrayOneDimensional);
